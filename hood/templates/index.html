@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+    <h3>Block Posts</h3>
+{% for post in posts%}
+<div class="card">
+    <div class="card-body">
+    
+    <blockquote class="blockquote mb-0">
+      <p>{{post.post}}</p>
+      <footer class="blockquote-footer">posted by <cite title="Source Title">{{post.user.username}}</cite></footer>
+    </blockquote>
+</div>
+</div>
+{% endfor %}
+
+</div>
+
+<div class="col-md-6">
+    <div class="container-fluid">
+        <h5>Important Contacts</h5>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{hood.name}} Police</h5>
+              <h6 class="card-subtitle mb-2 text-muted">contact information</h6>
+              <p class="card-text"><i class="fa fa-phone" aria-hidden="true"> {{hood.police}}</i>
+              </p>
+            </div>
+          </div>
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{hood.name}} Hospital</h5>
+              <h6 class="card-subtitle mb-2 text-muted">contact information</h6>
+              <p class="card-text"><i class="fa fa-phone" aria-hidden="true"> {{hood.health}}</i>
+              </p>
+
+            </div>
+          </div>
+    </div>
+</div>
+</div>
+</div>
+{%endblock%}

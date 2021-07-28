@@ -1,0 +1,30 @@
+{%extends 'base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if searched_business%}
+      <h2>{{ searched_business|length }} businesses with the name {{ message }} found</h2>
+    {% else %}
+      <h2> No business found with name {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+    {% if searched_business %}
+  {% for business in searched_business %}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{business.name}}</h5>
+        <p class="card-text">{{business.email}}</p>
+    </div>
+</div>
+   
+
+  {% endfor %}
+  
+    {% endif %}
+</div>
+  {%endblock%}
+

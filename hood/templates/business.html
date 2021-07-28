@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
+{% block content%}
+<div class="container-fluid">
+    <form class="d-flex" action="{% url 'search'%}">
+        <input class="form-control me-2" type="search" placeholder="Search Business" aria-label="Search" name="business" >
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <p></p>
+    <div class="row">
+        <div class="col-md-6">    
+{% for business in businesses%}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{business.name}}</h5>
+        <p class="card-text">{{business.email}}</p>
+    </div>
+</div>
+
+{% endfor %}
+</div>
+
+
+<div class="col-md-6"> 
+
+<form action="{% url 'business' %}" method="post" novalidate enctype="multipart/form-data" class="mr-4 mt-4 ml-4 mb-4">
+    {% csrf_token%}
+    {% bootstrap_form bs_form%}
+    <button type="submit" class="btn btn-primary btn-sm"> Add business</button>
+</form>
+</div>
+</div>
+</div>
+{%endblock%}
+

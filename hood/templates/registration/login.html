@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% load django_bootstrap5 %}
+{% block content %}
+    {% if form.errors %}
+    <p>Check values that you entered</p>
+    {% endif %}
+
+    {% if next %}
+    <p>Not authorized to access that page</p>
+    {% endif %}
+    <form action="{% url 'login'%}" method="post">
+        {% csrf_token %}
+      
+<p class="form-label mb-3">Username: {{form.username}}</p>
+<p>Password: {{form.password}}</p>
+
+<p> <input type="submit" class="btn btn-info" value="login"> </p>
+<input type="hidden" name="next" value="{{next}}">
+    </form>
+
+    <a href="{% url 'register'%}" ><button type="button" class="btn btn-primary">Sign Up</button></a>
+</body>
+</html>
+
+{%endblock%}

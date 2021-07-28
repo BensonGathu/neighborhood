@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form action="{% url 'user_p' %}" method="post" novalidate enctype="multipart/form-data" class="mr-4 mt-4 ml-4 mb-4">
+    {% csrf_token%}
+    {{ profile_form|crispy}}
+    <button type="submit" class="btn btn-primary btn-sm"> Add Profile</button>
+</form>
+
+{%endblock%}
